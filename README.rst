@@ -21,3 +21,7 @@ Configuration
 =============
 
 All the configuration is done on */etc/stats-sender/settings.py*.
+
+
+.. _Statsd: https://github.com/etsy/statsd
+.. _pystatsd: https://github.com/jsocol/pystatsd
