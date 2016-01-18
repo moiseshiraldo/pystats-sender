@@ -12,9 +12,9 @@ class RabbitmqSender(Sender):
 
     def send(self):
         command = "sudo rabbitmqctl list_queues"
-        if RABBITMQ.get('vhost'):
+        if RABBITMQ.get('vhost', '').isalpha():
             command = command + " -p " + RABBITMQ['vhost']
-        if RABBITMQ.get('items'):
+        if RABBITMQ.get('items', '').isalpha():
             command = command + " name" + RABBITMQ['items']
             items = RABBITMQ['items'].split()
         lines = self.command_output(command)

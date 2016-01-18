@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
   name='stats-sender',
-  version='0.1.0-alpha',
+  version='0.2.0-alpha',
   description='A Python stats collector and sender for Statsd',
   long_description=read('README.rst'),
   url='https://github.com/moiseshiraldo/pystats-sender',

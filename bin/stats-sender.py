@@ -1,10 +1,25 @@
 import sys
 import time
+import argparse
 
-sys.path.append('/etc/stats-sender')
+parser = argparse.ArgumentParser(description='Initialize the stats senders.')
+parser.add_argument("-c", "--config", help="Specify configuration directory")
+args = parser.parse_args()
 
-from settings import *
-from stats_sender.senders import *
+if args.config:
+    conf_dir = args.config
+else:
+    conf_dir = '/etc/stats-sender'
+
+sys.path.append(conf_dir)
+
+try:
+    from settings import *
+    from stats_sender.senders import *
+except ImportError:
+    print(("[Error]: couldn't find settings.py on "+conf_dir))
+    sys.exit()
+
 
 if 'Rabbitmq' in INSTALLED_SENDERS:
     rabbitmq_sender = RabbitmqSender()
